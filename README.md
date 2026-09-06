@@ -39,10 +39,10 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 | dsh | `~/.dsh/AGENTS.md`（或 `$DSH_HOME/AGENTS.md`） |
 | pi / zcode | 各自的用户级全局指令文件（路径待确认，机制相同） |
 
-两层分工：
+两种放法（内容相同，唯一区别是路径）：
 
-- **全局文件**：四条铁律 + 方法论引用 + 「进入写作前」门 + 第三方 skill 映射 —— "怎么写字"的规则，只放一次。
-- **项目文件**：只留「术语源 → 本仓 openwiki」一句 —— "用什么词"的来源，随项目变。
+- **全局**：内容同上，但把「进入写作前」第 0 步的路径改成**绝对路径**（每台机器按 quality-writing 实际 clone 位置改）。
+- **项目**：`repo-config/AGENTS.md` 原样放仓库根，用**相对路径** `quality-writing/methodology/writing-methodology.md`（quality-writing 以 git submodule 挂入时生效）。
 
 ## 目录结构
 
