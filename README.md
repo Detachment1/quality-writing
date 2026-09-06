@@ -2,20 +2,42 @@
 
 让 dsh / pi / zcode 写出高质量文字的统一规范与技能包。
 
-核心思想：**质量能力不是独立工具，而是 agent 的默认行为**——通过「仓库公约 + 统一方法论 + 场景技能 + openwiki 知识」四层，无缝嵌入 SE 与开发的日常使用，不增加额外使用成本。
+核心思路：**质量能力不是独立工具，而是 agent 的默认行为**——由「仓库公约 + 统一方法论 + 场景技能 + openwiki 术语表」四层协作实现（见下方总览图）。
 
-## 为什么是这个架构
+## 30 秒速览
 
-四个痛点（自造词、啰嗦、条理乱、结构乱）是横切关注点，任何文字产出都存在。
-所以采用：**一份统一方法论（唯一权威）+ 薄场景技能（只放场景特有信息）**。
-技能引用方法论而非各自内嵌规则，避免规则漂移、改一处全生效。
+**四层协作关系（总览图）：**
+
+```
+AGENTS.md（公约，agent 启动自动加载）
+   ↓ 指向
+writing-methodology.md（唯一权威：拆解 → 展开 + 通用四问）
+   ↑ 被引用
+skills/*（薄适配：只填读者用途/骨架/术语域/范例）
+   ↑ 术语来源
+openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁用词/出处）
+```
+
+**三步上手：**
+
+1. 把 `repo-config/AGENTS.md` 放进代码仓、文档仓各一份；
+2. 用 openwiki 给代码仓生成术语表（真实命名 + 指向代码的 repo:// 证据）；
+3. 让 agent 写文档时调用 `skills/*`，其余由它自动遵守。
+
+> 前置：openwiki 是 LangChain 的仓库 wiki 生成 CLI，需单独安装并配置内网 OpenAI 兼容接口（见「前置条件与离线部署」）。
+
+## 快速上手
+
+1. **放公约**：把 `repo-config/AGENTS.md` 放进代码仓和文档仓各一份；若两仓都要用，建议用 git submodule 指向本仓库，避免两份公约各自漂移。
+2. **建术语表**：把 `openwiki/INSTRUCTIONS.example.md` 内容复制进代码仓的 `openwiki/INSTRUCTIONS.md`，运行 `openwiki --update --language zh-CN`，产出 `术语表.md`（每条术语带指向代码的 repo:// 证据）。
+3. **写文档**：需要写正式文档时让 agent 调用 `skills/write-design-doc.md`（其余场景照 `skills/_template.md` 新增），按「拆解 → 展开 → 四问自检」执行。
 
 ## 目录结构
 
 ```
 quality-writing/
 ├── methodology/
-│   └── writing-methodology.md      # ★ 统一写作方法论（双阶段：拆解 → 展开），唯一权威
+│   └── writing-methodology.md      # ★ 统一写作方法论（双阶段：拆解 → 展开）
 ├── skills/
 │   ├── _template.md                # 场景技能统一薄模板（新技能照它填）
 │   └── write-design-doc.md         # 示例场景技能
@@ -25,24 +47,11 @@ quality-writing/
     └── AGENTS.md                   # 放进两个 git 仓的公约，agent 启动自动加载
 ```
 
-## 四层协作关系
+## 为什么是这个架构
 
-```
-AGENTS.md（公约，agent 启动自动加载）
-   ↓ 指向
-writing-methodology.md（唯一权威：拆解→展开 + 通用四问）
-   ↑ 被引用
-skills/*（薄适配：只填读者用途/骨架/术语域/范例）
-   ↑ 术语来源
-openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁用词/出处）
-```
-
-## 怎么用（无缝衔接，零额外成本）
-
-1. 把 `repo-config/AGENTS.md` 放进**代码仓**和**文档仓**各一份（或 git submodule / 路径引用）。
-2. 代码仓用 openwiki 生成**术语表**（真实命名 + 证据），方法见 `openwiki/INSTRUCTIONS.example.md`。
-3. dsh / pi / zcode 启动自动加载 AGENTS.md，写任何文字自动遵守方法论。
-4. 需要写正式文档时，agent 调用对应 `skills/*`，按「拆解 → 展开」执行。
+四个痛点（自造词、啰嗦、条理乱、结构乱）是横切关注点，任何文字产出都存在。
+所以采用：**一份统一方法论（唯一权威）+ 薄场景技能（只放场景特有信息）**。
+技能引用方法论而非各自内嵌规则，避免规则漂移、改一处全生效。
 
 ## 方法论核心（一句话）
 
@@ -50,10 +59,10 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 
 详见 `methodology/writing-methodology.md`。
 
-## 内网离线部署
+## 前置条件与离线部署
 
-- 本仓库是纯 Markdown + 文本，**无需安装任何依赖**。
-- 有网机器：`git clone` 或下载 zip → 拷入公司内网 → 放进 git 仓 / 挂到 agent 可读路径即可。
+- **本仓库**：纯 Markdown + 文本，无任何依赖，`git clone` 或下载 zip 即用。
+- **生成术语表**：需另装 openwiki（LangChain 开源 CLI）并配置内网 OpenAI 兼容接口；到公司后 `openwiki --update` 即可，全程不联网。
 
 ## 待办（按优先级）
 
