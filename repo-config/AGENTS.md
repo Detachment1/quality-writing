@@ -13,16 +13,18 @@
 
 ## 写正式文档时（强制）
 
-写**任何文档**（设计文档 / 分析 / 汇报 / wiki / spec 等），**不论使用哪个 skill**，展开正文之前都必须：
+写任何文档（设计文档 / 分析 / 汇报 / wiki / spec 等），不论使用哪个 skill，按以下流程：
 
-1. 先输出**脑图骨架**（MECE 分类、原子命名、重点难点单独标注）给我确认；
-2. **不确认，不展开**。
+1. 第一步先 read 范式文件（位置见下），严格按其「阶段一·拆解」的 A1–A5 五原则和验收标准输出脑图骨架；
+2. 输出脑图后停下，等我确认；**不确认，不展开**；
+3. 确认后再按其「阶段二·展开」展开正文；
+4. 展开完过「通用四问」自检。
 
-确认后再展开 → 展开完过「通用四问」自检。
+范式文件位置：
+- 全局配置：绝对路径（如 `/Users/detachment/future/AI/quality-writing/methodology/writing-methodology.md`，每台机器按 quality-writing 实际 clone 位置改）
+- 项目配置：`quality-writing/methodology/writing-methodology.md`（quality-writing 以 git submodule 挂入仓库时）
 
 > 日常聊天回复走轻量版（结论先行 + 术语准 + 去冗余），不强制脑图。
-
-方法论位置：quality-writing 仓库的 `methodology/writing-methodology.md`（本机固定 clone 路径）。
 
 ## 与第三方 skill 的对接（映射）
 
