@@ -15,21 +15,32 @@
 ```
 quality-writing/
 ├── methodology/
-│   └── writing-methodology.md   # ★ 统一写作方法论（双阶段：拆解 → 展开），唯一权威
+│   └── writing-methodology.md      # ★ 统一写作方法论（双阶段：拆解 → 展开），唯一权威
 ├── skills/
-│   └── write-design-doc.md      # 示例场景技能（薄适配，引用方法论）
-├── glossary/
-│   └── (待补) 术语表白名单/黑名单（中英）
+│   ├── _template.md                # 场景技能统一薄模板（新技能照它填）
+│   └── write-design-doc.md         # 示例场景技能
+├── openwiki/
+│   └── INSTRUCTIONS.example.md     # openwiki 指令示例（生成高质量术语表）
 └── repo-config/
-    └── AGENTS.md                # 放进两个 git 仓的公约，agent 启动自动加载
+    └── AGENTS.md                   # 放进两个 git 仓的公约，agent 启动自动加载
+```
+
+## 四层协作关系
+
+```
+AGENTS.md（公约，agent 启动自动加载）
+   ↓ 指向
+writing-methodology.md（唯一权威：拆解→展开 + 通用四问）
+   ↑ 被引用
+skills/*（薄适配：只填读者用途/骨架/术语域/范例）
+   ↑ 术语来源
+openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁用词/出处）
 ```
 
 ## 怎么用（无缝衔接，零额外成本）
 
-1. 把 `repo-config/AGENTS.md` 放进**代码仓**和**文档仓**各一份（或通过 git submodule / 路径引用本仓库）。
-2. openwiki 分别维护两类信息：
-   - 代码仓 openwiki：模块/类/接口/表/字段**真实命名**（术语源，治自造词）
-   - 文档仓 openwiki：术语表、文档模板、写作范例（golden exemplars）
+1. 把 `repo-config/AGENTS.md` 放进**代码仓**和**文档仓**各一份（或 git submodule / 路径引用）。
+2. 代码仓用 openwiki 生成**术语表**（真实命名 + 证据），方法见 `openwiki/INSTRUCTIONS.example.md`。
 3. dsh / pi / zcode 启动自动加载 AGENTS.md，写任何文字自动遵守方法论。
 4. 需要写正式文档时，agent 调用对应 `skills/*`，按「拆解 → 展开」执行。
 
@@ -37,9 +48,15 @@ quality-writing/
 
 > 写作 = 拆解（为自己，无损压缩）→ 展开（为读者，零跳跃读懂）
 
-详见 [`methodology/writing-methodology.md`](methodology/writing-methodology.md)。
+详见 `methodology/writing-methodology.md`。
 
 ## 内网离线部署
 
 - 本仓库是纯 Markdown + 文本，**无需安装任何依赖**。
 - 有网机器：`git clone` 或下载 zip → 拷入公司内网 → 放进 git 仓 / 挂到 agent 可读路径即可。
+
+## 待办（按优先级）
+
+1. 补其余场景技能：性能分析、SQL 分析、项目汇报、wiki、日常回复（套 `skills/_template.md`）。
+2. 为 `write-design-doc` 补一份团队认可的范例（gold exemplar）。
+3. 到公司把 `repo-config/AGENTS.md` 里的方法论路径填死，并跑一篇真实设计文档验证。
