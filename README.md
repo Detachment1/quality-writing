@@ -44,8 +44,6 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 - **全局文件**：四条铁律 + 方法论引用 + 「进入写作前」门 + 第三方 skill 映射 —— "怎么写字"的规则，只放一次。
 - **项目文件**：只留「术语源 → 本仓 openwiki」一句 —— "用什么词"的来源，随项目变。
 
-> 全局公约是"指令级约束"：模型会稳定遵循，但不同于 JSON Schema 的硬强制；要硬保证结构，需在生成时配合结构化输出。
-
 ## 目录结构
 
 ```
@@ -73,9 +71,3 @@ quality-writing/
 
 - **本仓库**：纯 Markdown + 文本，无任何依赖，`git clone` 或下载 zip 即用。
 - **生成术语表**：需另装 openwiki（LangChain 开源 CLI）并配置内网 OpenAI 兼容接口；到公司后 `openwiki --update` 即可，全程不联网。
-
-## 待办（按优先级）
-
-1. 用 openwiki 建术语表（代码仓 + 文档仓），把 `[待定]` 术语收敛成正式命名。
-2. 在文档仓 openwiki 补 1–2 篇团队认可的范例（gold exemplar）。
-3. 到公司确认 pi / zcode 的全局指令路径，并验证 openspec explore → propose 全流程。
