@@ -11,7 +11,7 @@
 ```
 AGENTS.md（公约，agent 启动自动加载；含「进入写作前」强制门）
    ↓ 引用
-writing-methodology.md（唯一权威：拆解 → 展开 + 通用四问 + 总览层形态表）
+writing-methodology.md（唯一权威：拆解 → 展开 + 通用五问 + 总览层形态表）
    ↑ 术语来源
 openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁用词/出处）
 ```
@@ -20,7 +20,7 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 
 1. 把 `repo-config/AGENTS.md` 放到全局位置（dsh 为 `~/.dsh/AGENTS.md`）或仓库根；
 2. 用 openwiki 给代码仓生成术语表（真实命名 + 指向代码的 repo:// 证据）；
-3. 直接让 agent 写文档，公约会自动走「拆解 → 脑图确认 → 展开 → 四问」，无需调用任何技能。
+3. 直接让 agent 写文档，公约会自动走「拆解 → 脑图确认 → 展开 → 五问」，无需调用任何技能。
 
 > 前置：openwiki 是 LangChain 的仓库 wiki 生成 CLI，需单独安装并配置内网 OpenAI 兼容接口（见「前置条件与离线部署」）。
 
@@ -28,7 +28,7 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 
 1. **放公约**：推荐先放全局（见下节「全局配置」，一次生效）；只针对单仓时，把 `repo-config/AGENTS.md` 放进该仓库根即可。
 2. **建术语表**：把 `openwiki/INSTRUCTIONS.example.md` 内容复制进代码仓的 `openwiki/INSTRUCTIONS.md`，运行 `openwiki --update --language zh-CN`，产出 `术语表.md`（每条术语带指向代码的 repo:// 证据）。
-3. **写文档**：直接让 agent 写即可。公约自动执行「阶段一思考 → 固化脑图 → 你确认 → 阶段二展开 → 四问自检」。不同文档的总览层形态见方法论里的「总览层形态」表，新场景加一行即可。
+3. **写文档**：直接让 agent 写即可。公约自动执行「阶段一思考 → 固化脑图 → 你确认 → 阶段二展开 → 五问自检」。不同文档的总览层形态见方法论里的「总览层形态」表，新场景加一行即可。
 
 ## 全局配置（推荐：一次配置，所有回复生效）
 
@@ -49,7 +49,7 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 ```
 quality-writing/
 ├── methodology/
-│   └── writing-methodology.md      # ★ 统一写作方法论（拆解 → 展开 + 四问 + 总览层形态表）
+│   └── writing-methodology.md      # ★ 统一写作方法论（拆解 → 展开 + 五问 + 总览层形态表）
 ├── openwiki/
 │   └── INSTRUCTIONS.example.md     # openwiki 指令示例（生成高质量术语表）
 └── repo-config/

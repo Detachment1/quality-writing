@@ -15,7 +15,7 @@
 
 - **阶段一 · 拆解 = 思考**：可以自己按 A1–A5 拆解，也可以用思考类 skill（grill-me、openspec-explore、brainstorming 等）辅助；这些 skill 同属阶段一，不需要在它们之前再插一步脑图。
 - **阶段一的产物**（无论怎么思考出来的）必须固化为脑图 / 结构化骨架，停下等我确认；**不确认，不进入阶段二**。
-- **阶段二 · 展开 = 写文档**（design / spec / 分析 / 汇报 / wiki 等），确认脑图后才开始，写完过「通用四问」。
+- **阶段二 · 展开 = 写文档**（design / spec / 分析 / 汇报 / wiki 等），确认脑图后才开始，写完过「通用五问」。
 
 > 拆解与验收的完整规范，动手前先 read 对应路径的 `writing-methodology.md`，严格按其「阶段一」的 A1–A5 和验收标准执行：
 > - 全局：`/Users/detachment/future/AI/quality-writing/methodology/writing-methodology.md`（绝对路径，每台机器按实际 clone 位置改）
@@ -37,13 +37,13 @@
 三原则：
 1. 不改第三方 skill 本身（其升级会覆盖本地改动）。
 2. 映射只写在本公约，不写进第三方 skill。
-3. 任何 skill 的产出最终都要过「通用四问」，不满足就回炉。
+3. 任何 skill 的产出最终都要过「通用五问」，不满足就回炉。
 
-典型链：思考（A1–A5 或 brainstorming / explore）→ 固化成脑图 → grill-me 验证 → 确认 → 展开（proposal / 写文档）→ 通用四问自检。
+典型链：思考（A1–A5 或 brainstorming / explore）→ 固化成脑图 → grill-me 验证 → 确认 → 展开（proposal / 写文档）→ 通用五问自检。
 
 ## 评审一篇既有文档时（不新造技能）
 
-用方法论的「通用四问」逐条检查，列出所有需要脑补/跳跃的点，并给出修改建议。
+用方法论的「通用五问」逐条检查，列出所有需要脑补/跳跃的点，并给出修改建议。
 
 ## 术语源（治自造词）
 
