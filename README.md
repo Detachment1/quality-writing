@@ -1,28 +1,26 @@
 # quality-writing
 
-让 dsh / pi / zcode 写出高质量文字的统一规范与技能包。
+让 dsh / pi / zcode 写出高质量文字的统一规范。
 
-核心思路：**质量能力不是独立工具，而是 agent 的默认行为**——由「仓库公约 + 统一方法论 + 场景技能 + openwiki 术语表」四层协作实现（见下方总览图）。
+核心思路：**质量能力不是独立工具，而是 agent 的默认行为**——由「仓库公约 + 统一方法论 + openwiki 术语表」三层协作实现（见下方总览图）。
 
 ## 30 秒速览
 
-**四层协作关系（总览图）：**
+**三层协作关系（总览图）：**
 
 ```
-AGENTS.md（公约，agent 启动自动加载）
-   ↓ 指向
-writing-methodology.md（唯一权威：拆解 → 展开 + 通用四问）
-   ↑ 被引用
-skills/*（薄适配：只填读者用途/骨架/术语域/范例）
+AGENTS.md（公约，agent 启动自动加载；含「进入写作前」强制门）
+   ↓ 引用
+writing-methodology.md（唯一权威：拆解 → 展开 + 通用四问 + 总览层形态表）
    ↑ 术语来源
 openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁用词/出处）
 ```
 
 **三步上手：**
 
-1. 把 `repo-config/AGENTS.md` 放到全局位置或仓库根；
+1. 把 `repo-config/AGENTS.md` 放到全局位置（dsh 为 `~/.dsh/AGENTS.md`）或仓库根；
 2. 用 openwiki 给代码仓生成术语表（真实命名 + 指向代码的 repo:// 证据）；
-3. 让 agent 写文档时调用 `skills/*`，其余由它自动遵守。
+3. 直接让 agent 写文档，公约会自动走「拆解 → 脑图确认 → 展开 → 四问」，无需调用任何技能。
 
 > 前置：openwiki 是 LangChain 的仓库 wiki 生成 CLI，需单独安装并配置内网 OpenAI 兼容接口（见「前置条件与离线部署」）。
 
@@ -30,7 +28,7 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 
 1. **放公约**：推荐先放全局（见下节「全局配置」，一次生效）；只针对单仓时，把 `repo-config/AGENTS.md` 放进该仓库根即可。
 2. **建术语表**：把 `openwiki/INSTRUCTIONS.example.md` 内容复制进代码仓的 `openwiki/INSTRUCTIONS.md`，运行 `openwiki --update --language zh-CN`，产出 `术语表.md`（每条术语带指向代码的 repo:// 证据）。
-3. **写文档**：需要写正式文档时让 agent 调用 `skills/write-design-doc.md`（其余场景照 `skills/_template.md` 新增），按「拆解 → 展开 → 四问自检」执行。
+3. **写文档**：直接让 agent 写即可。公约自动执行「阶段一思考 → 固化脑图 → 你确认 → 阶段二展开 → 四问自检」。不同文档的总览层形态见方法论里的「总览层形态」表，新场景加一行即可。
 
 ## 全局配置（推荐：一次配置，所有回复生效）
 
@@ -43,7 +41,7 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 
 两层分工：
 
-- **全局文件**：四条铁律 + 方法论引用 + 评审触发语 —— "怎么写字"的规则，只放一次。
+- **全局文件**：四条铁律 + 方法论引用 + 「进入写作前」门 + 第三方 skill 映射 —— "怎么写字"的规则，只放一次。
 - **项目文件**：只留「术语源 → 本仓 openwiki」一句 —— "用什么词"的来源，随项目变。
 
 > 全局公约是"指令级约束"：模型会稳定遵循，但不同于 JSON Schema 的硬强制；要硬保证结构，需在生成时配合结构化输出。
@@ -53,10 +51,7 @@ openwiki（术语表：中文术语/English/代码真实命名/定义/别名禁�
 ```
 quality-writing/
 ├── methodology/
-│   └── writing-methodology.md      # ★ 统一写作方法论（双阶段：拆解 → 展开）
-├── skills/
-│   ├── _template.md                # 场景技能统一薄模板（新技能照它填）
-│   └── write-design-doc.md         # 示例场景技能
+│   └── writing-methodology.md      # ★ 统一写作方法论（拆解 → 展开 + 四问 + 总览层形态表）
 ├── openwiki/
 │   └── INSTRUCTIONS.example.md     # openwiki 指令示例（生成高质量术语表）
 └── repo-config/
@@ -66,8 +61,7 @@ quality-writing/
 ## 为什么是这个架构
 
 四个痛点（自造词、啰嗦、条理乱、结构乱）是横切关注点，任何文字产出都存在。
-所以采用：**一份统一方法论（唯一权威）+ 薄场景技能（只放场景特有信息）**。
-技能引用方法论而非各自内嵌规则，避免规则漂移、改一处全生效。
+所以采用：**一份统一方法论（唯一权威），全局强制生效**。场景差异（总览层形态、术语域）只体现在方法论的一张表 + openwiki 术语表里，**不另设技能**——避免规则在多处漂移。
 
 ## 方法论核心（一句话）
 
@@ -82,6 +76,6 @@ quality-writing/
 
 ## 待办（按优先级）
 
-1. 补其余场景技能：性能分析、SQL 分析、项目汇报、wiki、日常回复（套 `skills/_template.md`）。
-2. 为 `write-design-doc` 补一份团队认可的范例（gold exemplar）。
-3. 到公司确认 pi / zcode 的全局指令路径与 openwiki 生成效果，并跑一篇真实设计文档验证。
+1. 用 openwiki 建术语表（代码仓 + 文档仓），把 `[待定]` 术语收敛成正式命名。
+2. 在文档仓 openwiki 补 1–2 篇团队认可的范例（gold exemplar）。
+3. 到公司确认 pi / zcode 的全局指令路径，并验证 openspec explore → propose 全流程。
