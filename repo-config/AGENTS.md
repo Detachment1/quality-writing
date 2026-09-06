@@ -17,6 +17,24 @@
 
 方法论位置：quality-writing 仓库的 `methodology/writing-methodology.md`（本机固定 clone 路径）。
 
+## 与第三方 skill 的对接（映射）
+
+使用开源 skill（grill-me、superpowers/brainstorming、openspec/explore、openspec/proposal 等）时，把它们接到方法论的对应阶段；不改动第三方 skill 本身：
+
+| 第三方 skill | 方法论阶段 | 用法 |
+|---|---|---|
+| superpowers / brainstorming | 拆解·输入（A1 穷举、A5 多维度） | 先发散，再把产出做 MECE 归类成脑图 |
+| openspec / explore | ≈ 拆解（理解问题、摸清边界） | 直接当拆解阶段用 |
+| openspec / proposal | ≈ 展开（写 spec 文档） | 写之前先补脑图骨架，proposal 结构当展开模板 |
+| grill-me | 拆解后的骨架验证 | 用它对脑图做压力测试，等价于「骨架先确认」 |
+
+三原则：
+1. 不改第三方 skill 本身（其升级会覆盖本地改动）。
+2. 映射只写在本公约，不写进第三方 skill。
+3. 任何 skill 的产出最终都要过「通用四问」，不满足就回炉。
+
+典型链：brainstorming 发散 → 脑图拆解（MECE / 原子命名 / 重点下钻）→ grill-me 验证骨架 → 展开 → 通用四问自检。
+
 ## 评审一篇既有文档时（不新造技能）
 
 用方法论的「通用四问」逐条检查，列出所有需要脑补/跳跃的点，并给出修改建议。
